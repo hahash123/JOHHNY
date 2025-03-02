@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { ScrollView, StyleSheet, Text, View, Pressable, Platform, Animated } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from '../activities/LoginScreen';  // Corrected path
+import LoginScreen from '../activities/LoginScreen';
+import Stopwatch from '../activities/Stopwatch';  
+import Register from '../activities/Register';  // Import Register screen
 
 const Stack = createStackNavigator();
 
@@ -49,25 +51,33 @@ const ExercisesScreen = ({ navigation }) => (
   <ScrollView contentContainerStyle={styles.container}>
     <Text style={styles.title}>EXERCISES</Text>
     <View style={styles.gridContainer}>
-      {/* Exercise button with correct navigation */}
       <Exercise 
         title="Exercise 1" 
         description="Log In Page." 
-        onPress={() => navigation.navigate('Login')}  // Navigate to Login screen
+        onPress={() => navigation.navigate('Login')}  
       />
-      <Exercise title="Exercise 2" description="StopWatch." />
-      <Exercise title="Exercise 3" description="This is the description for Exercise 3." />
+      <Exercise 
+        title="Exercise 2" 
+        description="StopWatch." 
+        onPress={() => navigation.navigate('Stopwatch')}  
+      />
+      <Exercise 
+        title="Exercise 3" 
+        description="Register Page." 
+        onPress={() => navigation.navigate('Register')}  
+      />
       <Exercise title="Exercise 4" description="This is the description for Exercise 4." />
       <Exercise title="Exercise 5" description="This is the description for Exercise 5." />
     </View>
   </ScrollView>
 );
 
-// Now, you should wrap everything in the NavigationContainer in the main app component (usually App.js or similar)
 const Exercises = () => (
   <Stack.Navigator>
     <Stack.Screen name="Exercises" component={ExercisesScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Stopwatch" component={Stopwatch} />
+    <Stack.Screen name="Register" component={Register} />  
   </Stack.Navigator>
 );
 
