@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { ScrollView, StyleSheet, Text, View, Pressable, Platform, Animated } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginScreen from '../activities/LoginScreen';
-import Stopwatch from '../activities/Stopwatch';  
-import Register from '../activities/Register';  
-import CRUDScreen from '../activities/CRUD';  // Import CRUD screen
+import Stopwatch from '../activities/Stopwatch';
+import Register from '../activities/Register';
+import CRUDScreen from '../activities/CRUD';
+import QuizScreen from '../activities/QuizScreen'; 
 
 const Stack = createStackNavigator();
 
@@ -70,9 +71,13 @@ const ExercisesScreen = ({ navigation }) => (
       <Exercise 
         title="Exercise 4" 
         description="Go to CRUD App." 
-        onPress={() => navigation.navigate('CRUDScreen')}  // Navigate to CRUD.js
+        onPress={() => navigation.navigate('CRUDScreen')}  
       />
-      <Exercise title="Exercise 5" description="This is the description for Exercise 5." />
+      <Exercise 
+        title="Exercise 5" 
+        description="Open Trivia Quiz." 
+        onPress={() => navigation.navigate('Quiz')} 
+      />
     </View>
   </ScrollView>
 );
@@ -82,8 +87,9 @@ const Exercises = () => (
     <Stack.Screen name="Exercises" component={ExercisesScreen} />
     <Stack.Screen name="Login" component={LoginScreen} />
     <Stack.Screen name="Stopwatch" component={Stopwatch} />
-    <Stack.Screen name="Register" component={Register} />  
-    <Stack.Screen name="CRUDScreen" component={CRUDScreen} />  
+    <Stack.Screen name="Register" component={Register} />
+    <Stack.Screen name="CRUDScreen" component={CRUDScreen} />
+    <Stack.Screen name="Quiz" component={QuizScreen} /> 
   </Stack.Navigator>
 );
 
